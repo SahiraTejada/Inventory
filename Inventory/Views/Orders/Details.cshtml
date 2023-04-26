@@ -4,11 +4,10 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-
+<h1 class="mt-5">Details</h1>
 <div>
     <h4>Order</h4>
-    <hr />
+    <hr class="mb-4" />
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.OrderStatus)
@@ -54,7 +53,10 @@
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.OrderId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<div class="d-flex w-100 mt-5  justify-content-between">
+    <a class="btn btn-success" role="button" asp-action="Edit" asp-route-id="@Model?.OrderId">Edit</a>
+    <a class="btn btn-secondary d-flex align-items-center justify-content-center gap-1" role="button" asp-action="Index">
+        <i class='bx bxs-chevrons-left icon-action'></i>
+        Back to List
+    </a>
 </div>

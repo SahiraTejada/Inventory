@@ -24,13 +24,10 @@ public partial class StoreInventoryContext : DbContext
 
     public virtual DbSet<Order> Orders { get; set; }
 
-    public virtual DbSet<OrderItem> OrderItems { get; set; }
 
     public virtual DbSet<Product> Products { get; set; }
 
     public virtual DbSet<Staff> Staffs { get; set; }
-
-    public virtual DbSet<Stock> Stocks { get; set; }
 
     public virtual DbSet<Store> Stores { get; set; }
 
@@ -144,31 +141,7 @@ public partial class StoreInventoryContext : DbContext
                 .HasConstraintName("FK__orders__store_id__34C8D9D1");
         });
 
-        modelBuilder.Entity<OrderItem>(entity =>
-        {
-            entity.HasKey(e => new { e.OrderId, e.ItemId }).HasName("PK__order_it__837942D4AC8B2BA0");
-
-            entity.ToTable("order_items");
-
-            entity.Property(e => e.OrderId).HasColumnName("order_id");
-            entity.Property(e => e.ItemId).HasColumnName("item_id");
-            entity.Property(e => e.Discount)
-                .HasColumnType("decimal(4, 2)")
-                .HasColumnName("discount");
-            entity.Property(e => e.ListPrice)
-                .HasColumnType("decimal(10, 2)")
-                .HasColumnName("list_price");
-            entity.Property(e => e.ProductId).HasColumnName("product_id");
-            entity.Property(e => e.Quantity).HasColumnName("quantity");
-
-            entity.HasOne(d => d.Order).WithMany(p => p.OrderItems)
-                .HasForeignKey(d => d.OrderId)
-                .HasConstraintName("FK__order_ite__order__398D8EEE");
-
-            entity.HasOne(d => d.Product).WithMany(p => p.OrderItems)
-                .HasForeignKey(d => d.ProductId)
-                .HasConstraintName("FK__order_ite__produ__3A81B327");
-        });
+       
 
         modelBuilder.Entity<Product>(entity =>
         {
@@ -235,24 +208,7 @@ public partial class StoreInventoryContext : DbContext
                 .HasConstraintName("FK__staffs__store_id__300424B4");
         });
 
-        modelBuilder.Entity<Stock>(entity =>
-        {
-            entity.HasKey(e => new { e.StoreId, e.ProductId }).HasName("PK__stocks__E68284D34960F949");
-
-            entity.ToTable("stocks");
-
-            entity.Property(e => e.StoreId).HasColumnName("store_id");
-            entity.Property(e => e.ProductId).HasColumnName("product_id");
-            entity.Property(e => e.Quantity).HasColumnName("quantity");
-
-            entity.HasOne(d => d.Product).WithMany(p => p.Stocks)
-                .HasForeignKey(d => d.ProductId)
-                .HasConstraintName("FK__stocks__product___3E52440B");
-
-            entity.HasOne(d => d.Store).WithMany(p => p.Stocks)
-                .HasForeignKey(d => d.StoreId)
-                .HasConstraintName("FK__stocks__store_id__3D5E1FD2");
-        });
+       
 
         modelBuilder.Entity<Store>(entity =>
         {

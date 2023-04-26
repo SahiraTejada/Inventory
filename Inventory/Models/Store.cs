@@ -25,5 +25,4 @@ public partial class Store
 
     public virtual ICollection<Staff> Staff { get; set; } = new List<Staff>();
 
-    public virtual ICollection<Stock> Stocks { get; set; } = new List<Stock>();
 }

@@ -5,7 +5,6 @@
 }
 
 <h1 class="mt-5">Edit</h1>
-
 <h4>Order</h4>
 <hr class="mb-4" />
 <div class="row">
@@ -14,50 +13,55 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="OrderId" />
             <div class="form-group col-md-2">
-                <label asp-for="CustomerId" class="control-label"></label>
+                <label asp-for="CustomerId" class="control-label">Customer ID</label>
                 <select asp-for="CustomerId" class="form-control" asp-items="ViewBag.CustomerId"></select>
                 <span asp-validation-for="CustomerId" class="text-danger"></span>
             </div>
             <div class="form-group col-md-2">
-                <label asp-for="OrderStatus" class="control-label"></label>
+                <label asp-for="OrderStatus" class="control-label">Order Status</label>
                 <input asp-for="OrderStatus" class="form-control" />
                 <span asp-validation-for="OrderStatus" class="text-danger"></span>
             </div>
             <div class="form-group col-md-4">
-                <label asp-for="OrderDate" class="control-label"></label>
+                <label asp-for="OrderDate" class="control-label">Order Date</label>
                 <input asp-for="OrderDate" class="form-control" />
                 <span asp-validation-for="OrderDate" class="text-danger"></span>
             </div>
             <div class="form-group col-md-2">
-                <label asp-for="RequiredDate" class="control-label"></label>
+                <label asp-for="RequiredDate" class="control-label">Required Dat</label>
                 <input asp-for="RequiredDate" class="form-control" />
                 <span asp-validation-for="RequiredDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ShippedDate" class="control-label"></label>
+                <label asp-for="ShippedDate" class="control-label">Shipped Date</label>
                 <input asp-for="ShippedDate" class="form-control" />
                 <span asp-validation-for="ShippedDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="StoreId" class="control-label"></label>
+                <label asp-for="StoreId" class="control-label">Store ID</label>
                 <select asp-for="StoreId" class="form-control" asp-items="ViewBag.StoreId"></select>
                 <span asp-validation-for="StoreId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="StaffId" class="control-label"></label>
+                <label asp-for="StaffId" class="control-label">Staff ID</label>
                 <select asp-for="StaffId" class="form-control" asp-items="ViewBag.StaffId"></select>
                 <span asp-validation-for="StaffId" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="d-flex w-100 mt-5 justify-content-between">
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+                <div>
+                    <a class="btn btn-secondary d-flex align-items-center justify-content-center gap-1" role="button" asp-action="Index">
+                        <i class='bx bxs-chevrons-left icon-action'></i>
+                        Back to List
+                    </a>
+                </div>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
