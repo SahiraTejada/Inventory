@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Inventory.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="mt-5">Categories</h1>
+
+<p class="d-flex align-items-center mt-3 mb-4">
+    <a class="btn btn-info d-flex align-items-center justify-content-center" role="button" asp-action="Create" style="color:white; font-weight:700"><i class="bi bi-plus icon-action" style="font-size:25px"></i>Create New</a>
+</p>
+<div class="d-flex justify-content-center align-items-lg-center w-100">
+<table class="table table-striped table-hover table-bordered w-50">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+             <th>Edit</th>
+            <th>Details</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <tr >
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+
+                <td class="text-center" >
+                        <a class="btn btn-primary " role="button" asp-action="Edit" asp-route-id="@item.CategoryId"><i class="bi bi-pencil-square icon-action"></i></a>
+                </td>
+                    <td class="text-center" >
+                                <a class="btn btn-warning" role="button" asp-action="Details" asp-route-id="@item.CategoryId"><i class="bi bi-eye-fill icon-action"></i></a>
+
+                    </td>
+                <td class="text-center">
+
+                        <a class="btn btn-danger" role="button" asp-action="Delete" asp-route-id="@item.CategoryId"><i class='bx bxs-trash icon-action'></i></a>
+                        </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
